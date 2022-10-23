@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-black: #000000;
+    --backgound-blue: #d3e0fd;
+    --color-greybase: #dedede;
+    --color-green: #6cc04a;
+    --color-red: #800020;
+    --gradient-yellow: linear-gradient(to top, #eda526, #f2b22b, #fdc331);
+    --gradient-purple: linear-gradient(to top, #7463d2, #5e58ad, #4c4fab);
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body {
+  background: var(--backgound-blue);
+}
+
+li,
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
