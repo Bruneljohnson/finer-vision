@@ -24,7 +24,7 @@ Please visit [Squelize.org](https://sequelize.org) and make sure you get to [Get
 
 ### Start
 
-Run [`npm start`] at the root of the project. This runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Run [`npm run dev`] at the root of the project. This runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### Start TypeScript Compiler
 
