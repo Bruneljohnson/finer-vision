@@ -1,25 +1,5 @@
-import { AppError } from './AppError';
 import { Response } from 'express';
 import { IError } from '../types/UtilitiesType.model';
-
-const castDBErrorHandler = (err: IError) => {
-  const message = `Invalid ${err.path}: ${err.value}`;
-  return new AppError(message, 400);
-};
-
-const duplicateDBErrorHandler = (err: IError) => {
-  const value = err.errmsg!.match(/(["'])(?:(?=(\\?))\2.)*?\1/);
-  const message = `Duplicate field value: ${
-    value![0]
-  }, please use another value.`;
-  return new AppError(message, 400);
-};
-
-const validationDBErrorHandler = (err: IError) => {
-  const errors = Object.values(err.errors!).map((error) => error.message);
-  const message = `Invalid input value: ${errors.join('. ')}`;
-  return new AppError(message, 400);
-};
 
 const sendErrorDev = (err: IError, res: Response) => {
   res.status(err.statusCode!).json({
@@ -54,11 +34,6 @@ export const globalErrorHandler = (err: IError, res: Response) => {
   } else if (process.env.NODE_ENV === 'production') {
     let error = { ...err };
     error.message = err.message;
-
-    if (error.name === 'CastError') error = castDBErrorHandler(error);
-    if (error.code === 11000) error = duplicateDBErrorHandler(error);
-    if (error.name === 'ValidationError')
-      error = validationDBErrorHandler(error);
 
     sendErrorProd(error, res);
   }

@@ -12,8 +12,8 @@ const helmet_1 = __importDefault(require("helmet"));
 const cors_1 = __importDefault(require("cors"));
 const express_mongo_sanitize_1 = __importDefault(require("express-mongo-sanitize"));
 //----------Utilities---------------//
-const AppError_1 = require("./utilities/AppError");
-const GlobalError_1 = require("./utilities/GlobalError");
+const utilities_1 = require("./utilities/");
+const utilities_2 = require("./utilities/");
 //---------Routers---------------//
 const formRoutes_1 = __importDefault(require("./routes/formRoutes"));
 //----------Create Server-------------//
@@ -64,7 +64,7 @@ app.use((0, compression_1.default)());
 app.use('/api/v1/forms', formRoutes_1.default);
 //----------GLOBAL HANDLING & 404 ROUTE-------------//
 app.use('*', (req, res, next) => {
-    next(new AppError_1.AppError(`Can't find ${req.originalUrl} on this Server`, 404));
+    next(new utilities_1.AppError(`Can't find ${req.originalUrl} on this Server`, 404));
 });
-app.use(GlobalError_1.globalErrorHandler);
+app.use(utilities_2.globalErrorHandler);
 exports.default = app;

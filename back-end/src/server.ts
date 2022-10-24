@@ -1,4 +1,5 @@
 import { connect } from 'mongoose';
+import db from './config/database.config';
 import path from 'path';
 import dotenv from 'dotenv';
 
@@ -12,26 +13,16 @@ dotenv.config({ path: path.resolve(__dirname, '../config.env') });
 import app from './app';
 
 //----------CONNECT TO DATABASE-------------//
-const DB = process.env.MONGOOSE_DB.replace(
-  '<password>',
-  process.env.MONGOOSE_PASSWORD
-);
 
-const launchMongoose = async () => {
+const launchSquelize = async () => {
   try {
-    await connect(DB, {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true,
-    });
-
+    await db.sync();
     console.log(`CONNECTED TO DB SUCCESSFULLY`);
   } catch (err) {
     console.log(`FAILED TO CONNECT TO DB!`);
   }
 };
-launchMongoose();
+launchSquelize();
 
 //----------START SERVER-------------//
 const port = process.env.PORT;

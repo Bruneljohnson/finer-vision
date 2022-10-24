@@ -1,14 +1,17 @@
 import { RequestHandler } from 'express';
-import { APIFeatures } from '../utilities/APIFeatures';
-import { AppError } from '../utilities/AppError';
-import { Form } from '../models/formModel';
+import { AppError } from '../utilities/';
+import { v4 as uuidv4 } from 'uuid';
 import { IParams } from '../types/FormTypes.model';
+import { FormInstance } from '../models/SquelizeFormModel';
 
-export const postform: RequestHandler = async (req, res, next) => {
+export const postForm: RequestHandler = async (req, res, next) => {
   try {
+    const id = uuidv4();
     const { firstName, surname, email, phoneNumber, gender, dob, comments } =
       req.body;
-    const newFrom = await Form.create({
+
+    const newFrom = await FormInstance.create({
+      id,
       firstName,
       surname,
       email,
@@ -18,25 +21,35 @@ export const postform: RequestHandler = async (req, res, next) => {
       comments,
     });
 
-    newFrom.__v = undefined;
     res.status(201).json({ status: 'success', data: newFrom });
   } catch (err) {
     next(err);
   }
 };
 
-export const getform: RequestHandler<IParams> = async (req, res, next) => {
+export const getForms: RequestHandler = async (req, res, next) => {
   try {
-    const form = await Form.findById(req.params.id).populate({
-      path: 'orders',
-      select: '-__v ',
+    const limit = (req.query.limit as number | undefined) || 10;
+    const offset = req.query.offset as number | undefined;
+    const forms = await FormInstance.findAll({ where: {}, limit, offset });
+    res.status(200).json({
+      status: 'success',
+      results: forms.length,
+      data: forms,
     });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getForm: RequestHandler<IParams> = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const form = await FormInstance.findAll({ where: { id } });
 
     if (!form) {
       return next(new AppError("Form doesn't exisit", 404));
     }
-
-    form.__v = undefined;
 
     res.status(200).json({
       status: 'success',
@@ -47,19 +60,18 @@ export const getform: RequestHandler<IParams> = async (req, res, next) => {
   }
 };
 
-export const getforms: RequestHandler = async (req, res, next) => {
+export const deleteForm: RequestHandler<IParams> = async (req, res, next) => {
   try {
-    const reqQuery: any = req.query;
-    const ApiFeatures = new APIFeatures(Form.find(), reqQuery)
-      .filter()
-      .sort()
-      .fields()
-      .paginate();
-    const tickets = await ApiFeatures.query;
-    res.status(200).json({
+    const { id } = req.params;
+    const form = await FormInstance.findOne({ where: { id } });
+    if (!form) {
+      return next(new AppError("Form doesn't exisit", 404));
+    }
+
+    await form.destroy();
+
+    res.status(204).json({
       status: 'success',
-      results: tickets.length,
-      data: tickets,
     });
   } catch (err) {
     next(err);

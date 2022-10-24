@@ -9,8 +9,8 @@ import cors from 'cors';
 import mongoSanitise from 'express-mongo-sanitize';
 
 //----------Utilities---------------//
-import { AppError } from './utilities/AppError';
-import { globalErrorHandler } from './utilities/GlobalError';
+import { AppError } from './utilities/';
+import { globalErrorHandler } from './utilities/';
 
 //---------Routers---------------//
 import formRouter from './routes/formRoutes';

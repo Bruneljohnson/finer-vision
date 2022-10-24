@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.APIFeatures = void 0;
 const APIFeatures = class {
     constructor(query, queryString) {
-        //MODEL.FIND() is this.query
+        //MODEL.FINDALL({where:{}}) is this.query
         this.query = query;
         this.queryString = queryString;
     }
@@ -20,7 +20,7 @@ const APIFeatures = class {
         console.log(queryObj);
         queryObj = JSON.stringify(queryObj);
         queryObj = JSON.parse(queryObj.replace(/\b(gte|lte|gt|lt)\b/g, (matched) => `$${matched}`));
-        this.query = this.query.find(queryObj);
+        this.query = this.query.findAll({ where: queryObj });
         return this;
     }
     sort() {
