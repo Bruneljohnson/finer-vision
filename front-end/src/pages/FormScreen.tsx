@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from '../Sections';
+import { Form } from '../components/Sections';
 
 export const FormScreen = () => {
   return <Form />;

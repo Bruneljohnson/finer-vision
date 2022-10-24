@@ -1,4 +1,4 @@
-import { FormScreen } from './components/Screens';
+import { FormScreen } from './pages';
 
 function App() {
   return <FormScreen />;

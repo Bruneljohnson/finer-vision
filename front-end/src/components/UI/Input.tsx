@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IHTMLINPUTProps, Labels } from '../../types/UIProps.model';
-import { convertEnumToString } from '../../helpers';
+import { convertEnumToString } from '../../utilities';
 
 export const Input: React.FC<IHTMLINPUTProps> = (props) => {
   const [desiredInput, setDesiredInput] = useState<string>('input');
