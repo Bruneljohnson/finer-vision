@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useInput } from '../../hooks/inputs';
+import { useTextArea } from '../../hooks/inputs';
 import { setComments, setSectionThreeValid } from '../../store/FormSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { ISectionsProps, Labels } from '../../types';
@@ -19,17 +19,18 @@ export const SectionThree: React.FC<ISectionsProps> = ({
   const [formPartThreeIsValid, setFormPartThreeIsValid] =
     useState<boolean>(false);
 
-  /**Validating TextArea with custom use-input hook. */
+  /**Validating TextArea with custom use-textarea hook. */
   const {
     value: enteredComments,
-    inputFocus: commentsInputFocus,
-    inputHandler: commentsInputHandler,
-    inputIsValid: commentsIsValid,
+    textAreaFocus: commentsTextAreaFocus,
+    textAreaHandler: commentsTextAreaHandler,
+    textAreaIsValid: commentsIsValid,
     error: commentsError,
     reset: clearComments,
-  } = useInput(
+  } = useTextArea(
     (value) => value.trim().toLowerCase() !== '' && value.trim().length >= 8
   );
+
   // SET FORM VALID TO TRUE IF CONDITION IS MET.
   useEffect(() => {
     if (commentsIsValid) {
@@ -68,8 +69,8 @@ export const SectionThree: React.FC<ISectionsProps> = ({
         id={'comments'}
         value={enteredComments}
         error={commentsError}
-        onFocus={commentsInputFocus}
-        onChange={commentsInputHandler}
+        onFocus={commentsTextAreaFocus}
+        onChange={commentsTextAreaHandler}
         minlength={3}
       />
     </SectionHeader>

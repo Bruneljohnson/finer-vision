@@ -76,17 +76,24 @@ export const Input: React.FC<IHTMLINPUTProps> = (props) => {
         <textarea
           data-testid={dataTest}
           id={id}
-          className={`text-lg py-3 px-3 bg-gray-100 transition-all border-b-2 
+          autoFocus={true}
+          className={`text-lg p-3 bg-gray-100 transition-all border-b-2 
           border-solid border-b-transparent rounded-xl shadow shadow-inner 
           focus:outline-none focus:border-b-transparent 
-          focus:valid:border-b-greenalert p-8 
-          w-72 sm:w-full h-36 ${error && `focus:invalid:border-b-yellow1`} `}
-          value={value}
+          focus:valid:border-b-greenalert 
+           w-72 sm:w-full h-36 resize-none box-border ${
+             error && `focus:invalid:border-b-yellow1`
+           } `}
+          cols={20}
+          rows={5}
           onFocus={onFocus}
           onChange={onChange}
           minLength={minlength}
+          maxLength={300}
           required
-        />
+        >
+          {value}
+        </textarea>
       )}
     </div>
   );
