@@ -7,7 +7,7 @@ It is Mobile Responsive.
 
 For more information about the task have a look at the [PDF](https://fvpublic.s3.eu-west-1.amazonaws.com/test/design.pdf)
 
-The Backend service for this application can be found here [Finer Visions](https://github.com/Bruneljohnson/finer-vision/tree/main/back-end)
+The Backend service for this application can be found here [Finer Visions BackEnd](https://github.com/Bruneljohnson/finer-vision/tree/main/back-end)
 
 # Setting up the development environment
 

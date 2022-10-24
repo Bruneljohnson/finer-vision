@@ -20,7 +20,8 @@ export const Input: React.FC<IHTMLINPUTProps> = (props) => {
     max,
   } = props;
 
-  /** Set the Component Output depending on the label passed as props. */
+  /** Set the Component Output depending on
+   * the label passed as props. */
   useEffect(() => {
     if (label === Labels.COMMS) {
       setDesiredInput('textarea');

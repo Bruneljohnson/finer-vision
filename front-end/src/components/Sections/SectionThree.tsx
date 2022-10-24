@@ -19,7 +19,7 @@ export const SectionThree: React.FC<ISectionsProps> = ({
   const [formPartThreeIsValid, setFormPartThreeIsValid] =
     useState<boolean>(false);
 
-  /**Validating TextArea */
+  /**Validating TextArea with custom use-input hook. */
   const {
     value: enteredComments,
     inputFocus: commentsInputFocus,
@@ -43,7 +43,7 @@ export const SectionThree: React.FC<ISectionsProps> = ({
     }
   }, [sectionThreeIsValid]);
 
-  // SET REDUX STORE DATA
+  // STORE DATA TO REDUX
   const nextStepHandler = () => {
     dispatch(setSectionThreeValid(true));
     dispatch(setComments(enteredComments));

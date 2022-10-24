@@ -25,6 +25,7 @@ export const SectionTwo: React.FC<ISectionsProps> = ({
   );
   const [formPartTwoIsValid, setFormPartTwoIsValid] = useState<boolean>(false);
 
+  // Validating inputs with custom use-input hook
   /**Validating Tel */
   const {
     value: enteredTelNumber,
@@ -106,7 +107,7 @@ export const SectionTwo: React.FC<ISectionsProps> = ({
     }
   }, [sectionTwoIsValid]);
 
-  // SET REDUX STORE DATA
+  // STORE DATA TO REDUX
   const nextStepHandler = () => {
     dispatch(setSectionTwoValid(true));
     dispatch(setGender(enteredGender as string));

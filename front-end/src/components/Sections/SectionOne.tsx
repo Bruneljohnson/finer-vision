@@ -24,7 +24,7 @@ export const SectionOne: React.FC<ISectionsProps> = ({
   );
   const [formPartOneIsValid, setFormPartOneIsValid] = useState<boolean>(false);
 
-  // Input Validators
+  // Input Validators with custom use-input hook
   /**Validating First Name */
   const {
     value: enteredFirstName,
@@ -50,7 +50,8 @@ export const SectionOne: React.FC<ISectionsProps> = ({
   );
 
   /**Validating Email */
-  /* REGEX USED TO VERIFY INPUTTED EMAIL AND USE OF CUSTOM INPUT HOOKS TO CAPTURE DATA */
+  /* REGEX USED TO VERIFY INPUTTED EMAIL AND USE OF 
+  CUSTOM INPUT HOOKS TO CAPTURE DATA */
   const {
     value: enteredEmail,
     inputFocus: emailInputFocus,
@@ -73,7 +74,7 @@ export const SectionOne: React.FC<ISectionsProps> = ({
     }
   }, [sectionOneIsValid]);
 
-  // SET REDUX STORE DATA
+  // STORE DATA TO REDUX
   const nextStepHandler = () => {
     dispatch(setSectionOneValid(true));
     dispatch(setFirstName(enteredFirstName));

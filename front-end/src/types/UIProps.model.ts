@@ -46,3 +46,7 @@ export interface ISectionsProps {
   onSection: (num: number) => void;
   onClearEntries: (clear: any) => void;
 }
+
+export interface ISectionClearFns {
+  [props: string]: () => {};
+}

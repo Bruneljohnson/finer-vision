@@ -6,7 +6,7 @@ This backend was first built on MongoDB before recreating it on SQLite3 With Squ
 
 For more information about the task have a look at the [PDF](https://fvpublic.s3.eu-west-1.amazonaws.com/test/design.pdf)
 
-The Frontend service for this application can be found here [Finer Visions](https://github.com/Bruneljohnson/finer-vision/tree/main/front-end)
+The Frontend service for this application can be found here [Finer Visions FrontEnd](https://github.com/Bruneljohnson/finer-vision/tree/main/front-end)
 
 # Setting up the development environment
 

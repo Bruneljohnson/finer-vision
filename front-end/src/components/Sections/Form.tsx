@@ -13,6 +13,7 @@ import {
   RequestConfig,
 } from '../../hooks/api/use-Http.model';
 import { clearSlice } from '../../store/FormSlice';
+import { ISectionClearFns } from '../../types';
 
 export const Form: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,13 @@ export const Form: React.FC = () => {
   const [formIsValid, setFormIsValid] = useState<boolean>(false);
   const [formStep, setFormStep] = useState<number>(0);
 
-  // Redux States
+  // Lift ClearField Functions From Sections.
+  const [clearSectionOne, setClearSectionOne] = useState<ISectionClearFns>();
+  const [clearSectionTwo, setClearSectionTwo] = useState<ISectionClearFns>();
+  const [clearSectionThree, setClearSectionThree] =
+    useState<ISectionClearFns>();
+
+  // Retrieve Redux States
   const sectionOneIsValid = useAppSelector(
     (state) => state.form.sectionOneValid
   );
@@ -30,7 +37,6 @@ export const Form: React.FC = () => {
   const sectionThreeIsValid = useAppSelector(
     (state) => state.form.sectionThreeValid
   );
-
   const firstName = useAppSelector((state) => state.form.firstName);
   const surname = useAppSelector((state) => state.form.surname);
   const email = useAppSelector((state) => state.form.email);
@@ -38,17 +44,6 @@ export const Form: React.FC = () => {
   const gender = useAppSelector((state) => state.form.gender);
   const dob = useAppSelector((state) => state.form.dob);
   const comments = useAppSelector((state) => state.form.comments);
-
-  // Lift ClearField Functions Up
-  const [clearSectionOne, setClearSectionOne] = useState<{
-    [props: string]: () => {};
-  }>({});
-  const [clearSectionTwo, setClearSectionTwo] = useState<{
-    [props: string]: () => {};
-  }>();
-  const [clearSectionThree, setClearSectionThree] = useState<{
-    [props: string]: () => {};
-  }>();
 
   // Clear Sections after submit successful
   const clearSectionOneHandler = (clearData: any) => {
@@ -61,7 +56,7 @@ export const Form: React.FC = () => {
     setClearSectionThree(clearData);
   };
 
-  // Set FormStep
+  // Set FormStep Functions /** To Increase/ set when button is clicked  */
   const increaseFormStepsHandler = () => {
     setFormStep((prev) => prev + 1);
   };
