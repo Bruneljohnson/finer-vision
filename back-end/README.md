@@ -10,7 +10,7 @@ The Frontend service for this application can be found here [Finer Visions]()
 
 # Setting up the development environment
 
-Please visit [a](https://redux-toolkit.js.org) and make sure you get to [Getting Started with Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
+Please visit [Squelize.org](https://sequelize.org) and make sure you get to [Getting Started](https://sequelize.org/docs/v6/getting-started/)
 
 ## Running the app
 
@@ -20,14 +20,11 @@ Please visit [a](https://redux-toolkit.js.org) and make sure you get to [Getting
    This will allow npm to download all the required dependancies needed to get the app running.
 
 2. Make sure all [`*.config.{js,ts}`] files are present in project directory.
+3. Install [SQLite] & [`SQLite Viewer`] from your VS CODE Marketplace.
 
 ### Start
 
 Run [`npm start`] at the root of the project. This runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-### Test
-
-Run [`npm test`] at the root of the project. This runs tests on the app using jest in the development mode. Open IDE terminal to view results.
 
 ### Start TypeScript Compiler
 
@@ -39,6 +36,8 @@ None.
 
 ### Packages
 
-[`TailwindCSS`] was used in this application. For more information about [TailwindCSS] visit [TailwindCSS.com](https://tailwindcss.com/docs/installation)
+[`Squelize & SQLite`] were used in this application.
 
-[`React-Toastify`] was used in this application. For more information about [ReactToastify] visit [fkhadra.github.io/react-toastify](https://fkhadra.github.io/react-toastify/introduction/)
+[`ExpressValidator`] was used in this application. For more information about [Express-Validator] visit [https://express-validator.github.io/docs/](https://express-validator.github.io/docs/check-api.html)
+
+For all other packages used in this file please check the [package.json] file.
