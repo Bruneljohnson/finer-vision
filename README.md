@@ -12,5 +12,7 @@ Back-end was built first on MongoDB before recreating it on SQLite3 With Squeliz
 To read the individual README:
 
 The Frontend service for this application can be found here [Finer Visions FrontEnd](https://github.com/Bruneljohnson/finer-vision/tree/main/front-end)
+`cd front-end` to access front-end repository.
 
 The Backend service for this application can be found here [Finer Visions BackEnd](https://github.com/Bruneljohnson/finer-vision/tree/main/back-end)
+`cd back-end` to access back-end repository.
